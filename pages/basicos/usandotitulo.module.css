@@ -1,0 +1,47 @@
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    
+}
+
+.xadrez {
+    min-width: 100px;
+    max-width: 100px;
+    max-height: 100px;
+    min-height: 100px;
+    background-color:white;
+
+}
+
+.xadrezB {
+    min-width: 100px;
+    max-width: 100px;
+    max-height: 100px;
+    min-height: 100px;
+    background-color:black;
+}
+
+.xadrezP{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 700px) {
+    .container {
+        max-width: 550px;
+        margin: 0 auto;
+    }
+    .xadrez {
+        min-width: 50px;
+        max-width: 50px;
+        max-height: 50px;
+        min-height: 50px;
+    }
+    .xadrezB {
+        min-width: 50px;
+        max-width: 50px;
+        max-height: 50px;
+        min-height: 50px;
+    }
+    
+}
