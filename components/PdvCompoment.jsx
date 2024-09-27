@@ -6,6 +6,9 @@ import React, { useState } from 'react';
 
 export default function PdvComponent() {
     const idVenda = 1;
+
+    const enter = false;
+
     // Estado para os produtos
     const [produtos, setProdutos] = useState([]);
     // Estado para os campos do formulário
@@ -13,22 +16,47 @@ export default function PdvComponent() {
     const [quantidade, setQuantidade] = useState('');
     const [valor, setValor] = useState('');
 
-    // Função para adicionar um produto
-    const addProduto = () => {
-        if (descricao.trim() && quantidade > 0 && valor > 0) {
+
+
+    const enterAuto = () => {
+        if (!enter) {
+            addProduto();
+        }else{
             setProdutos([
                 ...produtos,
                 {
                     id: produtos.length + 1,
                     descricao,
-                    quantidade: Number(quantidade),
-                    valor: Number(valor)
+                    quantidade: 1,
+                    valor: randon(1, 100)
                 }
             ]);
             // Limpar os campos após adicionar
             setDescricao('');
             setQuantidade('');
             setValor('');
+
+        }
+    }
+
+    // Função para adicionar um produto
+    const addProduto = () => {
+        if (descricao.trim() && quantidade > 0 ) {
+            setProdutos([
+                ...produtos,
+                {
+                    id: produtos.length + 1,
+                    descricao,
+                    quantidade: Number(quantidade),
+                    valor: Math.floor(Math.random() * 100) + 1
+                }
+            ]);
+            // Limpar os campos após adicionar
+            setDescricao('');
+            setQuantidade('');
+            setValor('');
+        }else{
+            alert('Preencha todos os campos corretamente');
         }
         console.log(produtos);
     };
@@ -90,6 +118,7 @@ export default function PdvComponent() {
                                 </div>
                             </div>                        
                             <Button onClick={addProduto} variant="primary">Adicionar</Button>
+                            <Button onClick={addProduto} className="ms-4" variant="warning">Ativar</Button>
                         </Card.Body>
                     </Card>
                 </div>
